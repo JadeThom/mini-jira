@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Enums\PriorityTaskEnum;
+use App\Http\Enums\StatusTaskEnum;
 use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
@@ -15,6 +17,11 @@ class Task extends Model
         'assigned_to',
         'due_date',
     ];
+
+    protected $casts = [
+        'status' => StatusTaskEnum::class,
+        'priority' => PriorityTaskEnum::class,
+        ];
 
     public function project()
     {
